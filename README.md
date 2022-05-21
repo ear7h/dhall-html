@@ -7,7 +7,7 @@ helper functions over [the XML package in Prelude](https://store.dhall-lang.org/
 
 ```dhall
 -- ./example.dhall
-let H = ./html.dhall
+let H = (./package.dhall).HTML
 let doc = H.html H.noattr
 	[ H.head H.noattr
 		[ H.meta (toMap { charset = "utf-8" })

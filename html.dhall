@@ -1,6 +1,5 @@
-let Prelude = https://prelude.dhall-lang.org/package.dhall
--- let XML = Prelude.XML
-let XML = https://raw.githubusercontent.com/ear7h/dhall-lang/issue-1224-raw-xml/Prelude/XML/package.dhall
+let Prelude = ./prelude.dhall
+let XML = Prelude.XML -- https://raw.githubusercontent.com/ear7h/dhall-lang/issue-1224-raw-xml/Prelude/XML/package.dhall
 let XML/render = XML.render
 let XML/element = XML.element
 let rawText = XML.rawText
@@ -19,8 +18,7 @@ let mkClosed = \(tag : Text) ->
 let render = \(doc : XML) -> Prelude.Text.concat [ "<!DOCTYPE html>", XML/render doc ]
 
 in
-	{ XML = XML@1
-	, Prelude = Prelude
+	{ Prelude
 	, render
 	, text
 	, rawText
@@ -54,6 +52,7 @@ in
 	, ol = mkOpen "ol"
 	, li = mkOpen "li"
 	, pre = mkOpen "pre"
+	, code = mkOpen "code"
 	, figure = mkOpen "figure"
 	, figcaption = mkOpen "figcaption"
 	, cite = mkOpen "cite"
@@ -63,7 +62,6 @@ in
 	, textarea = mkOpen "textarea"
 
 	, iframe = mkOpen "iframe"
-
 
 	-- self closing tags
 	, br = mkClosed "br"

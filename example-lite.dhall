@@ -1,5 +1,7 @@
-let L = ./lite.dhall
-let H = L.H
+let Pkg = ./package.dhall
+let L   = Pkg.Lite
+let H   = Pkg.HTML
+let il  = L.inline
 let doc = H.html H.noattr
 	[ H.head H.noattr
 		[ H.meta (toMap { charset = "utf-8" })
@@ -13,8 +15,19 @@ let doc = H.html H.noattr
 			, L.li "cloudy"
 			, L.li "rainy"
 			]
-		, L.p "${L.inline.a "top" "#hello-world"}"
-		, L.script "alert(\"script!!\")"
+		, L.p "${il.a "top" "#Hello World"}"
+		, L.p
+			-- nested string interpolation makes messes up
+			-- vim's syntax highlighting
+			(  "and he said, \""
+			++ (il.strong "what ${il.em "is"} this?")
+			++ "\""
+			)
+		-- , L.script "alert(\"script!!\");"
+		, L.codeBlock ''
+			alert("script");
+			''
+		, L.blockquote "what is this?"
 		]
 	]
 
