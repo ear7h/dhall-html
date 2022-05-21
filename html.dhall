@@ -19,7 +19,9 @@ let mkClosed = \(tag : Text) ->
 let render = \(doc : XML) -> Prelude.Text.concat [ "<!DOCTYPE html>", XML/render doc ]
 
 in
-	{ render
+	{ XML = XML@1
+	, Prelude = Prelude
+	, render
 	, text
 	, rawText
 	, Attrs
@@ -31,6 +33,7 @@ in
 	, title = mkOpen "title"
 	, style = mkOpen "style"
 	, body = mkOpen "body"
+	, script = mkOpen "script"
 
 
 	-- headings
