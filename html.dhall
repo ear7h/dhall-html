@@ -59,6 +59,7 @@ in
 	, blockquote = mkOpen "blockquote"
 
 	, form = mkOpen "form"
+	, label = mkOpen "label"
 	, textarea = mkOpen "textarea"
 
 	, iframe = mkOpen "iframe"
