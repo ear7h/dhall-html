@@ -58,6 +58,9 @@ in
 	, cite = mkOpen "cite"
 	, blockquote = mkOpen "blockquote"
 
+	, details = mkOpen "details"
+	, summary = mkOpen "summary"
+
 	, form = mkOpen "form"
 	, label = mkOpen "label"
 	, textarea = mkOpen "textarea"
